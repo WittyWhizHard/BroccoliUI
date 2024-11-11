@@ -1,2 +1,2 @@
 # BroccoliUI
- My flavor UI component library
+My tasty UI components library
