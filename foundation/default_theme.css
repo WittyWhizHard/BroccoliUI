@@ -1,0 +1,97 @@
+@import './color_tokens.css';
+@import './screen_tokens.css';
+
+/*
+ * LAYOUT
+*/
+html,
+body,
+main,
+section,
+article {
+    /* layout background */
+    background-color: var(--color-neutral-lower);
+}
+
+/* address,
+details,
+dialog,
+div,
+figure,
+footer,
+form,
+header,
+iframe,
+nav,
+noscript,
+object,
+ol,
+picture,
+table,
+ul,
+video { */
+    /* layout elevation */
+    /* background-color: var(--color-neutral-lowest); */
+    /* layout foreground */
+    /* color: var(--color-neutral-highest); */
+    /* layout border */
+    /* border: 1px solid var(--color-neutral-low); */
+/*} */
+
+/*
+ * BUTTON PRIMARY
+*/
+/* 
+    element={button, a.button}
+    size={small, medium, large; larger}
+    type={primary, secondary, tertiary, light, success, danger, warning}
+    ghost={true or flase}
+    state={default, {hover, focus}, active, disable}  
+    label={hidden or bottom position}  
+*/
+
+
+@media (prefers-color-scheme: dark) {
+
+    /*
+     * LAYOUT
+    */
+    html,
+    body,
+    main,
+    section,
+    article {
+        /* global background */
+        background-color: var(--color-neutral-lowest);
+    }
+
+    /* address,
+    details,
+    dialog,
+    div,
+    figure,
+    footer,
+    form,
+    header,
+    iframe,
+    nav,
+    noscript,
+    object,
+    ol,
+    picture,
+    table,
+    ul,
+    video { */
+        /* layout elevation */
+        /* background-color: var(--color-neutral-lower);
+    }*/
+}
+
+
+@media only screen and (min-width: 80rem) and (min-aspect-ratio: 16/9) {}
+
+
+/* utils */
+:is(.flex-reverse) {
+    flex-direction: row-reverse;
+}

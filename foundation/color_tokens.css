@@ -1,0 +1,111 @@
+:root {
+    /* light/neutral */
+    --color-neutral-lowest: hsl(0, 0%, 100%, 1);
+    --color-neutral-lower: hsl(240, 5%, 96%);
+    --color-neutral-low: hsl(240, 6%, 90%);
+    --color-neutral-medium: hsl(240, 5%, 65%);
+    --color-neutral-high: hsl(240, 5%, 34%);
+    --color-neutral-higher: hsl(240, 5%, 26%);
+    --color-neutral-highest: hsl(240, 10%, 4%);
+
+    /* lime */
+    --color-brand-lowest: hsl(78, 92%, 95%);
+    --color-brand-lower: hsl(80, 89%, 89%);
+    --color-brand-low: hsl(82, 85%, 67%);
+    --color-brand-medium: hsl(84, 81%, 44%);
+    --color-brand-high: hsl(86, 78%, 27%);
+    --color-brand-higher: hsl(88, 61%, 20%);
+    --color-brand-highest: hsl(89, 80%, 10%);
+
+    /* green */
+    --color-success-lowest: hsl(138, 76%, 97%);
+    --color-success-lower: hsl(141, 84%, 93%);
+    --color-success-low: hsl(142, 77%, 73%);
+    --color-success-medium: hsl(142, 71%, 45%);
+    --color-success-high: hsl(142, 72%, 29%);
+    --color-success-higher: hsl(144, 61%, 20%);
+    --color-success-highest: hsl(145, 80%, 10%);
+
+    /* rose */
+    --color-danger-lowest: hsl(356, 100%, 97%);
+    --color-danger-lower: hsl(356, 100%, 95%);
+    --color-danger-low: hsl(353, 96%, 82%);
+    --color-danger-medium: hsl(350, 89%, 60%);
+    --color-danger-high: hsl(345, 83%, 41%);
+    --color-danger-higher: hsl(342, 75%, 30%);
+    --color-danger-highest: hsl(343, 88%, 16%);
+
+    /* amber */
+    --color-warning-lowest: hsl(48, 100%, 96%);
+    --color-warning-lower: hsl(48, 96%, 89%);
+    --color-warning-low: hsl(46, 97%, 65%);
+    --color-warning-medium: hsl(38, 92%, 50%);
+    --color-warning-high: hsl(26, 90%, 37%);
+    --color-warning-higher: hsl(22, 78%, 26%);
+    --color-warning-highest: hsl(21, 92%, 14%);
+
+    /* dark */
+    --color-shadow-small: hsl(240, 10%, 4%, 0.04);
+    --color-shadow-medium: hsl(240, 10%, 4%, 0.04);
+    --color-shadow-large: hsl(240, 10%, 4%, 0.04);
+    --color-shadow-xlarge: hsl(240, 10%, 4%, 0.06);
+    --color-shadow-2xlarge: hsl(240, 10%, 4%, 0.1);
+    --color-shadow-inner: hsl(240, 10%, 4%, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* neutral/light */
+        --color-neutral-lowest: hsl(240, 6%, 10%);
+        --color-neutral-lower: hsl(240, 4%, 16%);
+        --color-neutral-low: hsl(240, 5%, 26%);
+        --color-neutral-medium: hsl(240, 4%, 46%);
+        --color-neutral-high: hsl(240, 5%, 84%);
+        --color-neutral-higher: hsl(240, 5%, 96%);
+        --color-neutral-highest: hsl(0, 0%, 100%, 1);
+
+        /* lime */
+        --color-brand-lowest: hsl(89, 80%, 10%);
+        --color-brand-lower: hsl(86, 69%, 23%);
+        --color-brand-low: hsl(85, 85%, 35%);
+        --color-brand-medium: hsl(83, 78%, 55%);
+        --color-brand-high: hsl(82, 85%, 67%);
+        --color-brand-higher: hsl(80, 89%, 89%);
+        --color-brand-highest: hsl(78, 92%, 95%);
+    
+        /* emerald */
+        --color-success-lowest: hsl(145, 80%, 10%);
+        --color-success-lower: hsl(143, 64%, 24%);
+        --color-success-low: hsl(142, 76%, 36%);
+        --color-success-medium: hsl(142, 69%, 58%);
+        --color-success-high: hsl(142, 77%, 73%);
+        --color-success-higher: hsl(141, 84%, 93%);
+        --color-success-highest: hsl(138, 76%, 97%);
+    
+        /* rose */
+        --color-danger-lowest: hsl(343, 88%, 16%);
+        --color-danger-lower: hsl(343, 80%, 35%);
+        --color-danger-low: hsl(347, 77%, 50%);
+        --color-danger-medium: hsl(351, 95%, 71%);
+        --color-danger-high: hsl(353, 96%, 82%);
+        --color-danger-higher: hsl(356, 100%, 95%);
+        --color-danger-highest: hsl(356, 100%, 97%);
+    
+        /* amber */
+        --color-warning-lowest: hsl(21, 92%, 14%);
+        --color-warning-lower: hsl(23, 83%, 31%);
+        --color-warning-low: hsl(32, 95%, 44%);
+        --color-warning-medium: hsl(43, 96%, 56%);
+        --color-warning-high: hsl(46, 97%, 65%);
+        --color-warning-higher: hsl(48, 96%, 89%);
+        --color-warning-highest: hsl(48, 100%, 96%);
+    
+        /* light */
+        --color-shadow-small: hsl(0, 0%, 100%, 0);
+        --color-shadow-medium: hsl(0, 0%, 100%, 0);
+        --color-shadow-large: hsl(0, 0%, 100%, 0);
+        --color-shadow-xlarge: hsl(0, 0%, 100%, 0);
+        --color-shadow-2xlarge: hsl(0, 0%, 100%, 0);
+        --color-shadow-inner: hsl(0, 0%, 100%, 0);
+    }
+}
