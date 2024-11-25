@@ -1,8 +1,4 @@
 <script>
-    import {setAccordionOptions} from './context.js'
-    export let collapse = false;
-
-    setAccordionOptions({collapse})
 </script>
 
 <div class="accordion">

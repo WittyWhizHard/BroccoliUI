@@ -1,50 +1,34 @@
 <script>
     import { slide } from "svelte/transition";
-    import { getAccordionOptions } from "./context";
 
     export let open = false;
-
-    const componentId = crypto.randomUUID();
-
-    const { collapse, activeComponentId } = getAccordionOptions();
-
-    function setActive() {
-        $activeComponentId = componentId;
-    }
+    const componentId = crypto.randomUUID()
 
     function toggleOpen() {
         open = !open;
     }
-
-    function handleClick() {
-        collapse ? setActive() : toggleOpen();
-    }
-
-    $: open && collapse && setActive();
-    $: isActive = $activeComponentId === componentId;
-    $: isOpen = collapse ? isActive : open;
 </script>
 
 <div class="accordion-item">
     <button
-        on:click={handleClick}
+        on:click={toggleOpen}
         class="accordion-toggle"
-        aria-expanded={isOpen}
+        aria-expanded={open}
         aria-controls="accordion-{componentId}"
     >
         <div class="accordion-title">
             <slot name="title" />
         </div>
 
-        <div class="accordion-caret" class:open={isOpen}>👉️</div>
+        <div class="accordion-caret" class:open={open}>👉️</div>
     </button>
 
-    {#if isOpen}
+    {#if open}
         <div
             transition:slide|local
             class="accordion-content"
             role="region"
-            aria-hidden={!isOpen}
+            aria-hidden={!open}
             aria-labelledby="accordion-{componentId}"
         >
             <slot name="content" />

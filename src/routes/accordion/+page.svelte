@@ -1,5 +1,5 @@
 <script>
-    import { Accordion, AccordionItem } from "$lib";
+    import { Accordion, AccordionItem} from "$lib";
 
     const accordionItems = [
         { title: "title 1", content: "content 1" },
