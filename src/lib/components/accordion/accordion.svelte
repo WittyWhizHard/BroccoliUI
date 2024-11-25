@@ -1,27 +1,21 @@
 <script>
-    import { setContext } from "svelte";
-    import { writable } from "svelte/store";
+    import {setAccordionOptions} from './context.js'
+    export let collapse = false;
 
-    let { colapse = false, children } = $props();
-
-    const activeComponentId = writable(null)
-
-    setContext('colapse', colapse)
-    setContext('active', activeComponentId)
+    setAccordionOptions({collapse})
 </script>
 
-
 <div class="accordion">
-    {@render children?.()}
+    <slot />
 </div>
 
 <style>
-    .accordion{
-        width: 60ch;
-        padding: 1rem;
-        color: hsl(220,10%,100%);
-        background-color: hsl(220,10%,10%);
-        border-radius: 4px;
-        box-shadow: 0px 1px 20px hsl(220,10%,8%);
+    .accordion {
+        width: var(--accordion-width, 100%);
+        padding: var(--accordion-padding, 1rem);
+        color: var(--accordion-color, hsl(220 10% 98%));
+        background-color: var(--accordion-background, hsl(220 10% 16%));
+        border-radius: var(--accordion-radius, 4px);
+        box-shadow: var(--accordion-shadow, 0px 1px 20px hsl(220 10% 8%));
     }
 </style>

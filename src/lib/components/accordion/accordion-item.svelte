@@ -1,81 +1,86 @@
 <script>
-    import {getContext} from "svelte"
-    
-    let { open = $bindable(false), title, content } = $props();
+    import { slide } from "svelte/transition";
+    import { getAccordionOptions } from "./context";
 
-    const componentId = crypto.randomUUID()
-    const colapse = getContext('colapse')
-    const activeComponentId = getContext('active')
+    export let open = false;
 
-    function setActive(){
-        $activeComponentId = componentId
+    const componentId = crypto.randomUUID();
+
+    const { collapse, activeComponentId } = getAccordionOptions();
+
+    function setActive() {
+        $activeComponentId = componentId;
     }
 
-    function toggleOpen(){
-        open = !open
+    function toggleOpen() {
+        open = !open;
     }
 
-    function handleClick(){
-        colapse ? setActive() : toggleOpen()
+    function handleClick() {
+        collapse ? setActive() : toggleOpen();
     }
 
-    $effect(() => {
-        open && colapse && setActive()
-    });
-    let isActive = $derived($activeComponentId == componentId)
-    let isOpen = $derived(colapse ? isActive : open)
+    $: open && collapse && setActive();
+    $: isActive = $activeComponentId === componentId;
+    $: isOpen = collapse ? isActive : open;
 </script>
 
 <div class="accordion-item">
-    <button class="accordion-toggle" onclick={handleClick}>
+    <button
+        on:click={handleClick}
+        class="accordion-toggle"
+        aria-expanded={isOpen}
+        aria-controls="accordion-{componentId}"
+    >
         <div class="accordion-title">
-            {@render title?.()}
+            <slot name="title" />
         </div>
-        <div
-            class="caret"
-            class:open={isOpen}
-            class:close={!isOpen}
-        >&rarr;</div>
+
+        <div class="accordion-caret" class:open={isOpen}>👉️</div>
     </button>
 
     {#if isOpen}
-        <div class="accordion-content">
-            {@render content?.()}
+        <div
+            transition:slide|local
+            class="accordion-content"
+            role="region"
+            aria-hidden={!isOpen}
+            aria-labelledby="accordion-{componentId}"
+        >
+            <slot name="content" />
         </div>
     {/if}
 </div>
 
 <style>
     .accordion-toggle {
+        width: 100%;
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 1rem;
-        color: inherit;
+        padding: var(--accordion-padding, 1rem);
+        color: var(--accordion-color, inherit);
         font: inherit;
+        font-weight: 600;
         border: none;
         background: none;
         cursor: pointer;
-        border-radius: 4px;
+        border-radius: var(--accordion-radius, 4px);
         transition: background-color 0.1s ease;
     }
 
     .accordion-toggle:hover {
-        background-color: hsl(220, 20%, 20%);
+        background-color: var(--accordion-hover, hsl(220 20% 20%));
     }
 
     .accordion-content {
-        padding: 1rem;
+        padding: var(--accordion-content-padding, 1rem);
+    }
+
+    .accordion-caret {
+        transition: rotate 0.3s ease;
     }
 
     .open {
-        transform: rotate(90deg);
-        transition: transform 0.3s ease;
-    }
-
-    .close {
-        transform: rotate(0deg);
-        transition: transform 0.3s ease;
+        rotate: 90deg;
     }
 </style>
