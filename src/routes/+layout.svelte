@@ -1,5 +1,9 @@
+<script>
+    let { children } = $props();
+</script>
+
 it's a layout for the header
 
 <main>
-    <slot />
+    {@render children?.()}
 </main>

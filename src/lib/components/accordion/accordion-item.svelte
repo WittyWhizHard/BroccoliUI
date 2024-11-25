@@ -1,7 +1,7 @@
 <script>
     import { slide } from "svelte/transition";
 
-    export let open = false;
+    let { open = $bindable(false), title, content } = $props();
     const componentId = crypto.randomUUID()
 
     function toggleOpen() {
@@ -11,13 +11,13 @@
 
 <div class="accordion-item">
     <button
-        on:click={toggleOpen}
+        onclick={toggleOpen}
         class="accordion-toggle"
         aria-expanded={open}
         aria-controls="accordion-{componentId}"
     >
         <div class="accordion-title">
-            <slot name="title" />
+            {@render title?.()}
         </div>
 
         <div class="accordion-caret" class:open={open}>👉️</div>
@@ -31,7 +31,7 @@
             aria-hidden={!open}
             aria-labelledby="accordion-{componentId}"
         >
-            <slot name="content" />
+            {@render content?.()}
         </div>
     {/if}
 </div>
