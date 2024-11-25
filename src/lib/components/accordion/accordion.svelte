@@ -1,8 +1,9 @@
 <script>
+    let { children } = $props();
 </script>
 
 <div class="accordion">
-    <slot />
+    {@render children?.()}
 </div>
 
 <style>

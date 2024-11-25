@@ -1,5 +1,5 @@
 <script>
-    import { Accordion, AccordionItem} from "$lib";
+    import { Accordion, AccordionItem } from "$lib";
 
     const accordionItems = [
         { title: "title 1", content: "content 1" },
@@ -12,34 +12,47 @@
 <a href="./">back</a>
 
 <Accordion collapse --accordion-width="40ch">
-	{#each accordionItems as item}
-		<AccordionItem>
-			<svelte:fragment slot="title">{item.title}</svelte:fragment>
-			<svelte:fragment slot="content">{item.content}</svelte:fragment>
-		</AccordionItem>
-	{/each}
+    {#each accordionItems as item}
+        <AccordionItem>
+            {#snippet title()}
+                {item.title}
+            {/snippet}
+            {#snippet content()}
+                {item.content}
+            {/snippet}
+        </AccordionItem>
+    {/each}
 </Accordion>
 
 <Accordion collapse --accordion-width="60ch">
-	{#each accordionItems as item, i}
-		<AccordionItem open={i === 0}>
-			<svelte:fragment slot="title">{item.title}</svelte:fragment>
-			<svelte:fragment slot="content">{item.content}</svelte:fragment>
-		</AccordionItem>
-	{/each}
+    {#each accordionItems as item, i}
+        <AccordionItem open={i === 0}>
+            {#snippet title()}
+                {item.title}
+            {/snippet}
+            {#snippet content()}
+                {item.content}
+            {/snippet}
+        </AccordionItem>
+    {/each}
 </Accordion>
 
 <Accordion collapse --accordion-width="80ch">
     <AccordionItem>
-        <svelte:fragment slot="title">title 1</svelte:fragment>
-		<svelte:fragment slot="content">content 1</svelte:fragment>
+        {#snippet title()}
+            title 1
+        {/snippet}
+        {#snippet content()}
+            content 1
+        {/snippet}
     </AccordionItem>
 
     <AccordionItem open>
-        <svelte:fragment slot="title">title 2</svelte:fragment>
-        <svelte:fragment slot="content">content 2</svelte:fragment>
+        {#snippet title()}
+            title 2
+        {/snippet}
+        {#snippet content()}
+            content 2
+        {/snippet}
     </AccordionItem>
 </Accordion>
-
-
-TODO : animate the content open
