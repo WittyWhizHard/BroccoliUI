@@ -14,20 +14,35 @@
 <Accordion colapse>
     {#each accordionItems as item}
         <AccordionItem>
-            <svelte:fragment slot="title">{item.title}</svelte:fragment>
-            <svelte:fragment slot="content">{item.content}</svelte:fragment>
+            {#snippet title()}
+                {item.title}
+            {/snippet}
+            {#snippet content()}
+                {item.content}
+            {/snippet}
         </AccordionItem>
     {/each}
 </Accordion>
 
 <Accordion colapse>
     <AccordionItem>
-        <svelte:fragment slot="title">title 1</svelte:fragment>
-        <svelte:fragment slot="content">content 1</svelte:fragment>
+        {#snippet title()}
+            title 1
+        {/snippet}
+        {#snippet content()}
+            content 1
+        {/snippet}
     </AccordionItem>
 
     <AccordionItem>
-        <svelte:fragment slot="title">title 2</svelte:fragment>
-        <svelte:fragment slot="content">content 2</svelte:fragment>
+        {#snippet title()}
+            title 2
+        {/snippet}
+        {#snippet content()}
+            content 2
+        {/snippet}
     </AccordionItem>
 </Accordion>
+
+
+TODO : animate the content open
