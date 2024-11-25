@@ -2,7 +2,7 @@
     import { setContext } from "svelte";
     import { writable } from "svelte/store";
 
-    export let colapse = false
+    let { colapse = false, children } = $props();
 
     const activeComponentId = writable(null)
 
@@ -12,7 +12,7 @@
 
 
 <div class="accordion">
-    <slot />
+    {@render children?.()}
 </div>
 
 <style>

@@ -1,7 +1,7 @@
 <script>
     import {getContext} from "svelte"
     
-    export let open = false;
+    let { open = $bindable(false), title, content } = $props();
 
     const componentId = crypto.randomUUID()
     const colapse = getContext('colapse')
@@ -19,15 +19,17 @@
         colapse ? setActive() : toggleOpen()
     }
 
-    $: open && colapse && setActive()
-    $: isActive = $activeComponentId == componentId
-    $: isOpen = colapse ? isActive : open
+    $effect(() => {
+        open && colapse && setActive()
+    });
+    let isActive = $derived($activeComponentId == componentId)
+    let isOpen = $derived(colapse ? isActive : open)
 </script>
 
 <div class="accordion-item">
     <button class="accordion-toggle" onclick={handleClick}>
         <div class="accordion-title">
-            <slot name="title" />
+            {@render title?.()}
         </div>
         <div
             class="caret"
@@ -38,7 +40,7 @@
 
     {#if isOpen}
         <div class="accordion-content">
-            <slot name="content" />
+            {@render content?.()}
         </div>
     {/if}
 </div>
